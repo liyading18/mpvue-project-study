@@ -1,43 +1,51 @@
 <template>
   <!-- Page下页面中的template会被构建成 .wxml文件 -->
   <div>
-    <view>{{ msg }}</view>
-    <button type="primary" @click="handleMsg">点击试试</button>
+    <!-- 在使用mpvue开发小程序时，html标签和wxml便签混合用 -->
+    <!-- mpvue中html标签与wxml标签含义一致的时候，推荐使用html标签；mpvue在构建时候会自动转换 -->
+
+    <!-- 轮播图部分 -->
+    <swiper
+      indicator-dots
+      indicator-color="rgba(255,255,255,.6)"
+      indicator-active-color="#fff"
+      interval="3000"
+      autoplay
+      circular
+    >
+      <swiper-item>
+        <a href="">
+          <img src="/static/uploads/banner1.png" alt="">
+        </a>
+      </swiper-item>
+      <swiper-item>
+        <a href="">
+          <img src="/static/uploads/banner2.png" alt="">
+        </a>
+      </swiper-item>
+      <swiper-item>
+        <a href="">
+          <img src="/static/uploads/banner3.png" alt="">
+        </a>
+      </swiper-item>
+    </swiper>
+    <!-- 轮播图部分 -->
+
   </div>
 </template>
 
 <script>
 // Page下页面中的script会被构建成 .js文件
-import card from '@/components/card'
-
-export default {
-  data () {
-    return {
-      msg: 'Hello Word!'
-    }
-  },
-
-  components: {
-    card
-  },
-
-  // 原样写小程序页面生命周期钩子
-  onLoad() {
-    console.log('小程序页面级别生命周期钩子')
-  },
-
-  methods: {
-    handleMsg() {
-      this.msg = '你好，世界！'
-    }
-  },
-
-  created () {
-    // let app = getApp()
-  }
-}
 </script>
 
 <style scoped>
 /* Page 下页面中的style会被构建成 .wxss 文件 */
+  swiper {
+    width: 750rpx;
+    height: 340rpx;
+  }
+  swiper img {
+    width: 750rpx;
+    height: 340rpx;
+  }
 </style>
