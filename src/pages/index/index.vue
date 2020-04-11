@@ -4,6 +4,10 @@
     <!-- 在使用mpvue开发小程序时，html标签和wxml便签混合用 -->
     <!-- mpvue中html标签与wxml标签含义一致的时候，推荐使用html标签；mpvue在构建时候会自动转换 -->
 
+    <!-- 自定义搜索组件 -->
+    <search />
+    <!-- 自定义搜索组件 -->
+
     <!-- 轮播图部分 -->
     <swiper
       indicator-dots
@@ -53,6 +57,15 @@
 
 <script>
 // Page下页面中的script会被构建成 .js文件
+import search from '@/components/search.vue'
+
+export default {
+
+  // 声明注册使用自定义组件
+  components: {
+    search
+  }
+}
 </script>
 
 <style scoped>
