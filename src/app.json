@@ -5,7 +5,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "学习mpvue",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
@@ -25,7 +25,6 @@
       "iconPath": "static/tabs/orders.png",
       "selectedIconPath": "static/tabs/orders-active.png"
     }],
-
     "items": [{
       "name": "首页",
       "pagePath": "pages/index/main",
