@@ -31,6 +31,23 @@
     </swiper>
     <!-- 轮播图部分 -->
 
+    <!-- 导航区 -->
+    <div class="navs">
+      <a href="">
+        <img src="/static/uploads/icon_index_nav_4@2x.png" alt="">
+      </a>
+      <a href="">
+        <img src="/static/uploads/icon_index_nav_3@2x.png" alt="">
+      </a>
+      <a href="">
+        <img src="/static/uploads/icon_index_nav_2@2x.png" alt="">
+      </a>
+      <a href="">
+        <img src="/static/uploads/icon_index_nav_1@2x.png" alt="">
+      </a>
+    </div>
+    <!-- 导航区 -->
+
   </div>
 </template>
 
@@ -47,5 +64,15 @@
   swiper img {
     width: 750rpx;
     height: 340rpx;
+  }
+  .navs {
+    display: flex;
+    height: 194rpx;
+    padding: 30rpx 45rpx;
+    box-sizing: border-box;
+    justify-content: space-between;
+  }
+  .navs a {
+    width: 128rpx;
   }
 </style>

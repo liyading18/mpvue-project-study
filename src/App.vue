@@ -10,4 +10,11 @@ export default {
 
 <style>
   /* App,vue 中的style会被构建成小程序的 app.wxss */
+
+  /* 全局样式 */
+  img {
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+  }
 </style>
