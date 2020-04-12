@@ -38,7 +38,8 @@
 
 <script>
 // Page下页面中的script会被构建成 .js文件
-import search from '@/components/search.vue'
+import search from '@/components/search.vue'  //  引入搜索组件
+import request from '@/utils/request'
 
 export default {
 
@@ -58,26 +59,45 @@ export default {
     // 在mpvue中使用API时，要将命名空间改成 mpvue
     // 即wx.request  =>  mpvue.request
 
-    // 获取轮播图资源 
-    mpvue.request({
-      url: 'https://www.zhengzhicheng.cn/api/public/v1/home/swiperdata',
-      method: 'GET',
-      success: (info) =>  {
-        this.bannerList = info.data.message
-      }
-    })
+    this.getBannerList()  // 获取轮播图资源 
+    this.getNavList()  // 获取导航资源
 
-    // 获取导航资源
-    mpvue.request({
-      url: 'https://www.zhengzhicheng.cn/api/public/v1/home/catitems',
-      method: 'GET',
-      success: (info) => {
-        this.navList = info.data.message
-      }
-    })
   },
 
   methods: {
+    // 获取轮播图
+    async getBannerList() {
+      try {
+        const { message } = await request('https://www.zhengzhicheng.cn/api/public/v1/home/swiperdata')
+        this.bannerList = message
+      } catch(err) {
+        console.log(err)
+      }
+      // mpvue.request({
+      //   url: 'https://www.zhengzhicheng.cn/api/public/v1/home/swiperdata',
+      //   method: 'GET',
+      //   success: (info) =>  {
+      //     this.bannerList = info.data.message
+      //   }
+      // })
+    },
+
+    // 获取首页导航数据
+    async getNavList() {
+      try {
+        const { message } = await request('https://www.zhengzhicheng.cn/api/public/v1/home/catitems')
+        this.navList = message
+      } catch(err) {
+        console.log(err)
+      }
+      // mpvue.request({
+      //   url: 'https://www.zhengzhicheng.cn/api/public/v1/home/catitems',
+      //   method: 'GET',
+      //   success: (info) => {
+      //     this.navList = info.data.message
+      //   }
+      // })
+    }
   }
 }
 </script>
