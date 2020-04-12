@@ -17,4 +17,8 @@ export default {
     height: 100%;
     vertical-align: middle;
   }
+  input {
+    width: 100%;
+    height: 100%;
+  }
 </style>
