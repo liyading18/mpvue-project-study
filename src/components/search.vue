@@ -1,15 +1,33 @@
 <template>
-  <div class="search focused">
+  <div class="search" :class="{ focused: focused }">
       <div class="input-box">
-          <input type="text" placeholder="请输入你想要的商品">
+          <input type="text" :placeholder="placeholder" @focus="getSearch">
       </div>
-      <div class="cancel">取消</div>
+      <div class="cancel" @click="cancelSearch">取消</div>
   </div>
 </template>
 
 <script>
 export default {
+    data() {
+        return {
+            focused: false,
+            placeholder: ''
+        }
+    },
 
+    methods: {
+        // 获得焦点搜索
+        getSearch() {
+            this.focused = true
+            this.placeholder = '请输入你想要的商品'
+        },
+        // 取消焦点搜索
+        cancelSearch() {
+            this.focused = false
+            this.placeholder = ''
+        }
+    } 
 }
 </script>
 
