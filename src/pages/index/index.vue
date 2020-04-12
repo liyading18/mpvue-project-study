@@ -17,19 +17,9 @@
       autoplay
       circular
     >
-      <swiper-item>
+      <swiper-item v-for="item in bannerList" :key="item.goods_id">
         <a href="">
-          <img src="/static/uploads/banner1.png" alt="">
-        </a>
-      </swiper-item>
-      <swiper-item>
-        <a href="">
-          <img src="/static/uploads/banner2.png" alt="">
-        </a>
-      </swiper-item>
-      <swiper-item>
-        <a href="">
-          <img src="/static/uploads/banner3.png" alt="">
+          <img :src="item.image_src" alt="">
         </a>
       </swiper-item>
     </swiper>
@@ -64,6 +54,27 @@ export default {
   // 声明注册使用自定义组件
   components: {
     search
+  },
+
+  data() {
+    return {
+      bannerList: []  // 轮播图
+    }
+  },
+
+  created() {
+    // 在mpvue中使用API时，要将命名空间改成 mpvue
+    // 即wx.request  =>  mpvue.request
+    mpvue.request({
+      url: 'https://www.zhengzhicheng.cn/api/public/v1/home/swiperdata',
+      method: 'GET',
+      success: (info) =>  {
+        this.bannerList = info.data.message
+      }
+    })
+  },
+
+  methods: {
   }
 }
 </script>
