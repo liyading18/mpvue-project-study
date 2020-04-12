@@ -39,7 +39,7 @@
 <script>
 // Page下页面中的script会被构建成 .js文件
 import search from '@/components/search.vue'  //  引入搜索组件
-import request from '@/utils/request'
+import request from '@/utils/request'  // 引入封装的mpvue的请求方法
 
 export default {
 
@@ -68,35 +68,25 @@ export default {
     // 获取轮播图
     async getBannerList() {
       try {
-        const { message } = await request('https://www.zhengzhicheng.cn/api/public/v1/home/swiperdata')
+        const { message } = await request({
+          url: '/api/public/v1/home/swiperdata'
+        })
         this.bannerList = message
       } catch(err) {
         console.log(err)
       }
-      // mpvue.request({
-      //   url: 'https://www.zhengzhicheng.cn/api/public/v1/home/swiperdata',
-      //   method: 'GET',
-      //   success: (info) =>  {
-      //     this.bannerList = info.data.message
-      //   }
-      // })
     },
 
     // 获取首页导航数据
     async getNavList() {
       try {
-        const { message } = await request('https://www.zhengzhicheng.cn/api/public/v1/home/catitems')
+        const { message } = await request({
+          url: '/api/public/v1/home/catitems'
+        })
         this.navList = message
       } catch(err) {
         console.log(err)
       }
-      // mpvue.request({
-      //   url: 'https://www.zhengzhicheng.cn/api/public/v1/home/catitems',
-      //   method: 'GET',
-      //   success: (info) => {
-      //     this.navList = info.data.message
-      //   }
-      // })
     }
   }
 }
