@@ -27,17 +27,8 @@
 
     <!-- 导航区 -->
     <div class="navs">
-      <a href="">
-        <img src="/static/uploads/icon_index_nav_4@2x.png" alt="">
-      </a>
-      <a href="">
-        <img src="/static/uploads/icon_index_nav_3@2x.png" alt="">
-      </a>
-      <a href="">
-        <img src="/static/uploads/icon_index_nav_2@2x.png" alt="">
-      </a>
-      <a href="">
-        <img src="/static/uploads/icon_index_nav_1@2x.png" alt="">
+      <a href="" v-for="item in navList" :key="item.name">
+        <img :src="item.image_src"  alt="">
       </a>
     </div>
     <!-- 导航区 -->
@@ -58,18 +49,30 @@ export default {
 
   data() {
     return {
-      bannerList: []  // 轮播图
+      bannerList: [],  // 轮播图
+      navList: [],  // 首页导航列表 
     }
   },
 
   created() {
     // 在mpvue中使用API时，要将命名空间改成 mpvue
     // 即wx.request  =>  mpvue.request
+
+    // 获取轮播图资源 
     mpvue.request({
       url: 'https://www.zhengzhicheng.cn/api/public/v1/home/swiperdata',
       method: 'GET',
       success: (info) =>  {
         this.bannerList = info.data.message
+      }
+    })
+
+    // 获取导航资源
+    mpvue.request({
+      url: 'https://www.zhengzhicheng.cn/api/public/v1/home/catitems',
+      method: 'GET',
+      success: (info) => {
+        this.navList = info.data.message
       }
     })
   },
