@@ -27,11 +27,29 @@
 
     <!-- 导航区 -->
     <div class="navs">
-      <a href="" v-for="item in navList" :key="item.name">
-        <img :src="item.image_src"  alt="">
+      <a href="" v-for="nav in navList" :key="nav.name">
+        <img :src="nav.image_src"  alt="">
       </a>
     </div>
     <!-- 导航区 -->
+
+    <!-- 楼层区 -->
+    <div class="floors">
+      <div class="floor"  v-for="(floor, key) in floorList" :key="key">
+        <div class="title">
+           <img :src="floor.floor_title.image_src" alt="">
+        </div>
+        <div class="items">
+          <img
+            v-for="product in floor.product_list"
+            :key="product.name"
+            :src="product.image_src"
+            alt=""
+          >
+        </div>
+      </div>
+    </div>
+    <!-- 楼层区 -->
 
   </div>
 </template>
@@ -52,6 +70,7 @@ export default {
     return {
       bannerList: [],  // 轮播图
       navList: [],  // 首页导航列表 
+      floorList: [],  // 楼层数据
     }
   },
 
@@ -61,6 +80,7 @@ export default {
 
     this.getBannerList()  // 获取轮播图资源 
     this.getNavList()  // 获取导航资源
+    this.getFloorList()  // 获取楼层数据
 
   },
 
@@ -87,12 +107,24 @@ export default {
       } catch(err) {
         console.log(err)
       }
+    },
+
+    // 获取楼层数据
+    async getFloorList() {
+      try {
+        const { message } = await request({
+          url: '/api/public/v1/home/floordata'
+        })
+        this.floorList = message
+      } catch(err) {
+        console.log(err)
+      }
     }
   }
 }
 </script>
 
-<style scoped>
+<style scoped lang="less">
 /* Page 下页面中的style会被构建成 .wxss 文件 */
   swiper {
     width: 750rpx;
@@ -111,5 +143,32 @@ export default {
   }
   .navs a {
     width: 128rpx;
+  }
+  .floors {
+    .title {
+      width: 750rpx;
+      height: 60rpx;
+      background-color: #f4f4f4;
+      padding-top: 20rpx;
+    }
+    .items {
+      padding: 20rpx 15rpx;
+      overflow: hidden;
+
+      img {
+        float: left;
+        width: 230rpx;
+        height: 188rpx;
+        margin-right: 10rpx;
+        margin-bottom: 10rpx;
+      }
+      img:nth-child(2n+1) {
+        margin-right: 0;
+      }
+      img:first-child {
+        height: 386rpx;
+        margin-right: 10px;
+      }
+    }
   }
 </style>

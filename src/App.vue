@@ -3,7 +3,7 @@
 export default {
   // 原样子写小程序的生命周期钩子
   onLaunch() {
-    console.log('小程序-mpvue的全局onLaunch')
+    // console.log('小程序-mpvue的全局onLaunch')
   }
 }
 </script>
@@ -13,6 +13,11 @@ export default {
 
   /* 全局样式 */
   img {
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+  }
+  image {
     width: 100%;
     height: 100%;
     vertical-align: middle;
