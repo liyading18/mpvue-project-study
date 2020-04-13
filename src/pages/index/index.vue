@@ -85,10 +85,13 @@ export default {
 
   },
 
-  // onPullDownRefresh() {
-  //   console.log("我被下拉了")
-  //   mpvue.stopPullDownRefresh()  // 停止下拉刷新
-  // },
+  async onPullDownRefresh() {
+    console.log("我被下拉了")
+    await this.getBannerList()  // 获取轮播图资源 
+    await this.getNavList()  // 获取导航资源
+    await this.getFloorList()  // 获取楼层数据
+    mpvue.stopPullDownRefresh()  // 停止下拉刷新
+  },
 
   methods: {
     // 获取轮播图

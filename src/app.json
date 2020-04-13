@@ -5,10 +5,7 @@
   "window": {
     "navigationBarBackgroundColor": "#ea4451",
     "navigationBarTitleText": "优购",
-    "navigationBarTextStyle": "white",
-    "enablePullDownRefresh": true,
-    "backgroundColor": "red",
-    "backgroundTextStyle": "light"
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
     "color": "#999",
