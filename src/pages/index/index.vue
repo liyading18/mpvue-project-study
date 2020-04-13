@@ -18,7 +18,8 @@
       circular
     >
       <swiper-item v-for="item in bannerList" :key="item.goods_id">
-        <a href="">
+        <!-- 这里之所以能写成page/goods/main，是因为在构建的时候，会将index.vue转换成main.wxml -->
+        <a :href="'/pages/goods/main?id='+item.goods_id">
           <img :src="item.image_src" alt="">
         </a>
       </swiper-item>
@@ -83,6 +84,11 @@ export default {
     this.getFloorList()  // 获取楼层数据
 
   },
+
+  // onPullDownRefresh() {
+  //   console.log("我被下拉了")
+  //   mpvue.stopPullDownRefresh()  // 停止下拉刷新
+  // },
 
   methods: {
     // 获取轮播图
