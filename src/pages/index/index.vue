@@ -75,14 +75,22 @@ export default {
     }
   },
 
-  created() {
+  // created() {
+  //   // 在mpvue中使用API时，要将命名空间改成 mpvue
+  //   // 即wx.request  =>  mpvue.request
+
+  //   this.getBannerList()  // 获取轮播图资源 
+  //   this.getNavList()  // 获取导航资源
+  //   this.getFloorList()  // 获取楼层数据
+
+  // },
+  mounted() {
     // 在mpvue中使用API时，要将命名空间改成 mpvue
     // 即wx.request  =>  mpvue.request
 
     this.getBannerList()  // 获取轮播图资源 
     this.getNavList()  // 获取导航资源
     this.getFloorList()  // 获取楼层数据
-
   },
 
   async onPullDownRefresh() {

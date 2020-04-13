@@ -39,7 +39,11 @@
 <script>
 export default {
 
-    created() {
+    // created() {
+    //     console.log('我是goods中的created')
+    // },
+    mounted() {
+       console.log('我是goods中的created')  
     },
 
     methods: {
