@@ -26,6 +26,16 @@
     </swiper>
     <!-- 轮播图部分 -->
 
+    <!-- 获取用户信息 -->
+    <!-- 此按钮配合wx.getUserInfo使用 -->
+    <!-- 注意：此按钮的open-type属性 -->
+    <button
+      type="primary"
+      open-type="getUserInfo"
+      style="margin: 40rpx"
+      @getuserinfo="getInfo"
+    >获取用户授权</button>
+
     <!-- 导航区 -->
     <div class="navs">
       <a href="" v-for="nav in navList" :key="nav.name">
@@ -75,15 +85,31 @@ export default {
     }
   },
 
-  // created() {
-  //   // 在mpvue中使用API时，要将命名空间改成 mpvue
-  //   // 即wx.request  =>  mpvue.request
+  created() {
+    // 登录api(微信提供)-获取登录凭证code 
+    mpvue.login({
+      success(res) {
+        console.log('登录api返回的res', res)
 
-  //   this.getBannerList()  // 获取轮播图资源 
-  //   this.getNavList()  // 获取导航资源
-  //   this.getFloorList()  // 获取楼层数据
+        // 获取用户信息wx.getUserInfo（微信提供）- (iv等数据)
+        // 注意：wx.getUserInfo这个接口长期被滥用（强制出现弹窗获取用户信息，用户体验不佳）
+        // 现腾讯改为：只有提供按钮主动才能出现授权弹窗
+        // mpvue.getUserInfo({
+        //   success(info) {
+        //     console.log('获取用户信息info', info)
+        //   }
+        // })
+      }
+    })
 
-  // },
+    //   // 在mpvue中使用API时，要将命名空间改成 mpvue
+    //   // 即wx.request  =>  mpvue.request
+
+    //   this.getBannerList()  // 获取轮播图资源 
+    //   this.getNavList()  // 获取导航资源
+    //   this.getFloorList()  // 获取楼层数据
+
+  },
   mounted() {
     // 在mpvue中使用API时，要将命名空间改成 mpvue
     // 即wx.request  =>  mpvue.request
@@ -102,6 +128,20 @@ export default {
   },
 
   methods: {
+    // 按钮获取用户信息事件
+    getInfo(ev) {
+      console.log('有人申请授权了')
+      console.log('ev', ev)
+      // 获取用户信息wx.getUserInfo（微信提供）- (iv等数据)
+      // 注意：wx.getUserInfo这个接口长期被滥用（强制出现弹窗获取用户信息，用户体验不佳）
+      // 现腾讯改为：只有提供按钮主动才能出现授权弹窗
+      mpvue.getUserInfo({
+        success(info) {
+          console.log('获取用户信息info', info)
+        }
+      })
+    },
+
     // 获取轮播图
     async getBannerList() {
       try {
