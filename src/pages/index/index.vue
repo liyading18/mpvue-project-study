@@ -192,7 +192,7 @@ export default {
       // 1. 是否登录
       if (mpvue.getStorageSync('token')) {
         // 检测用户是否曾经授权过
-        mpvue.getSetting({
+        mpvue.getSetting({ 
           success(info) {
             console.log('获取授权信息info', info)
             // 因为authSetting中的 ‘scope.userInfo’ 为字符串类型，所以可以以数组形式取值
