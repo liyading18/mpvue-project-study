@@ -56,6 +56,13 @@
 					"pathName": "pages/goods/main",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "登录页面",
+					"pathName": "pages/auth/main",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

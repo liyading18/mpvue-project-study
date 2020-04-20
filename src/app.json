@@ -1,7 +1,9 @@
 {
   "pages": [
     "pages/index/main",
-    "pages/logs/main"  ],
+    "pages/logs/main",
+    "pages/auth/main" 
+  ],
   "window": {
     "navigationBarBackgroundColor": "#ea4451",
     "navigationBarTitleText": "优购",

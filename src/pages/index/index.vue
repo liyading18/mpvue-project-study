@@ -36,6 +36,8 @@
       @getuserinfo="getInfo"
     >获取用户授权</button>
 
+    <button type="primary" style="margin: 40rpx" @click="getSettingInfo">购买该商品</button>
+
     <!-- 导航区 -->
     <div class="navs">
       <a href="" v-for="nav in navList" :key="nav.name">
@@ -175,6 +177,45 @@ export default {
         this.floorList = message
       } catch(err) {
         console.log(err)
+      }
+    },
+
+    // 获取用户是否授权的信息
+    getSettingInfo() {
+      // 为验证获取授权getSetting流程所伪造
+      mpvue.setStorage({
+        key: 'token',
+        data: 'liyadingweizhaungdeshouquan'
+      })
+
+
+      // 1. 是否登录
+      if (mpvue.getStorageSync('token')) {
+        // 检测用户是否曾经授权过
+        mpvue.getSetting({
+          success(info) {
+            console.log('获取授权信息info', info)
+            // 因为authSetting中的 ‘scope.userInfo’ 为字符串类型，所以可以以数组形式取值
+            console.log('info.authSetting', info.authSetting['scope.userInfo'])
+            if(!info.authSetting['scope.userInfo']) {
+              // 如果没有授权，请去点击按钮，进行授权申请
+              mpvue.navigateTo({
+                url: '/pages/auth/main'
+              })
+              return;
+            }
+
+            // 获取用户信息
+            mpvue.getUserInfo({
+              success(info) {
+                console.log('用户信息', info)
+                // 接着登录步骤
+                // ...
+              }
+            })
+          }
+        })
+
       }
     }
   }
