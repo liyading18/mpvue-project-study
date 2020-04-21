@@ -11,11 +11,22 @@ export default {
     name: 'AppLogin',
 
     mounted() {
-        // 获取当前的地理位置-经纬度
+        // 1. 获取当前的地理位置-经纬度
         // 需要在app.json中全局配置 permission 
-        mpvue.getLocation({
+        // mpvue.getLocation({
+        //     success(res) {
+        //         console.log(res)
+        //     }
+        // })
+
+        // 2. 根据经纬度转换成相应的地理位置
+        // 在手机上可以具体查看，电脑上不一定能看到
+        mpvue.openLocation({
+            latitude: 38,
+            longitude: 120,
+            scale: 5,
             success(res) {
-                console.log(res)
+                console.log('res', res)
             }
         })
     },
