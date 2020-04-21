@@ -21,10 +21,17 @@ export default {
 
         // 2. 根据经纬度转换成相应的地理位置
         // 在手机上可以具体查看，电脑上不一定能看到
-        mpvue.openLocation({
-            latitude: 38,
-            longitude: 120,
-            scale: 5,
+        // mpvue.openLocation({
+        //     latitude: 38,
+        //     longitude: 120,
+        //     scale: 5,
+        //     success(res) {
+        //         console.log('res', res)
+        //     }
+        // })
+
+        // 3. 基于当前位置，选择一个具体位置
+        mpvue.chooseLocation({
             success(res) {
                 console.log('res', res)
             }
