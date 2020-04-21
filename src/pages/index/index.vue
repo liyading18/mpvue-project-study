@@ -121,6 +121,12 @@ export default {
     this.getFloorList()  // 获取楼层数据
   },
 
+  onReachBottom() {
+    // 距离底部50px时会被触发
+    // 如果想自己设置距离: 可以在小程序文档-小程序配置-全局配置-window-onReachBottomDistance
+      console.log('我快到底部了')
+  },
+
   async onPullDownRefresh() {
     console.log("我被下拉了")
     await this.getBannerList()  // 获取轮播图资源 
