@@ -3,6 +3,10 @@
       <button type="primary" open-type="getUserInfo" @getuserinfo="getUserInfo">点击登录</button>
       <button type="primary" @click="getAddress">添加地址</button>
       <span>{{ addressInfo }}</span>
+
+      <!-- 地图-map -->
+      <map id="map" longitude="113.324520" latitude="23.099994" scale="14" show-location style="width: 100%; height: 300px;"></map>
+
   </div>
 </template>
 
@@ -31,11 +35,12 @@ export default {
         // })
 
         // 3. 基于当前位置，选择一个具体位置
-        mpvue.chooseLocation({
-            success(res) {
-                console.log('res', res)
-            }
-        })
+        // mpvue.chooseLocation({
+        //     success(res) {
+        //         console.log('res', res)
+        //     }
+        // })
+
     },
 
     data() {
