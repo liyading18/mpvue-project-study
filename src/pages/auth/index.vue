@@ -10,6 +10,16 @@
 export default {
     name: 'AppLogin',
 
+    mounted() {
+        // 获取当前的地理位置-经纬度
+        // 需要在app.json中全局配置 permission 
+        mpvue.getLocation({
+            success(res) {
+                console.log(res)
+            }
+        })
+    },
+
     data() {
         return {
             address: null

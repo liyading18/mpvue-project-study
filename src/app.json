@@ -4,6 +4,7 @@
     "pages/logs/main",
     "pages/auth/main" 
   ],
+ 
   "window": {
     "navigationBarBackgroundColor": "#ea4451",
     "navigationBarTitleText": "优购",
@@ -48,5 +49,10 @@
       "activeIcon": "static/tabs/orders-active.png"
     }],
     "position": "bottom"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
   }
 }
