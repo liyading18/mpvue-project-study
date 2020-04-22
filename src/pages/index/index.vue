@@ -135,6 +135,18 @@ export default {
     mpvue.stopPullDownRefresh()  // 停止下拉刷新
   },
 
+  // 监听用户分享操作
+  onShareAppMessage() {
+    return {
+      // return 返回一个对象，return的对象内容即为自定义内容
+      title: '一起来玩游戏吧',
+      path: 'pages/index/main',
+      imageUrl: 'https://www.zhengzhicheng.cn/pyg/pic_floor01_1@2x.png'
+    }
+  },
+
+  // 除了分享之外，还可以在API-转发-相应的api
+
   methods: {
     // 按钮获取用户信息事件
     getInfo(ev) {
