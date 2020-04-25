@@ -7,10 +7,16 @@
       <!-- 地图-map -->
       <map id="map" longitude="113.324520" latitude="23.099994" scale="14" show-location style="width: 100%; height: 300px;"></map>
 
+      <button type="primary" @click="addShopCarts">仿购物车</button>
   </div>
 </template>
 
 <script>
+// 小程序引入lodash之前所需要的的
+import '../../utils/lodash'
+// 引入lodash
+import _ from 'lodash'
+
 export default {
     name: 'AppLogin',
 
@@ -71,6 +77,28 @@ export default {
                     console.log('this.address', _self .address)
                 }
             })
+        },
+
+        addShopCarts() {
+            let arr1 = [
+              {
+                  id: 1,
+                  name: 'zhangsan'
+              },
+              {
+                  id: 2,
+                  name: 'lisi'
+              }
+            ]
+            let arr2 = [
+              {
+                  id: 1,
+                  name: 'zhangsan'
+              }
+            ]
+
+            let result = _.differenceWith(arr1, arr2, _.isEqual)
+            console.log('result', result)
         }
     }
 }
