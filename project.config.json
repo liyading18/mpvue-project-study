@@ -58,9 +58,16 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 1,
 					"name": "登录页面",
 					"pathName": "pages/auth/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "webview",
+					"pathName": "pages/webview/main",
 					"query": "",
 					"scene": null
 				}
