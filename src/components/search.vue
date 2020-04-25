@@ -1,7 +1,7 @@
 <template>
   <div class="search" :class="{ focused: focused }">
       <div class="input-box">
-          <input type="text" :placeholder="placeholder" @focus="getSearch">
+          <input type="text" :placeholder="placeholder" @focus="getSearch" @confirm="handleConfirm">
       </div>
       <div class="cancel" @click="cancelSearch">取消</div>
   </div>
@@ -26,6 +26,10 @@ export default {
         cancelSearch() {
             this.focused = false
             this.placeholder = ''
+        },
+        // confirm事件相当于手机键盘上右下角的搜索或确定-键盘敲回车代表确定
+        handleConfirm() {
+            console.log('confirm事件执行了！！！')
         }
     } 
 }
